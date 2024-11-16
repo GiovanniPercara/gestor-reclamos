@@ -33,7 +33,7 @@ export default class ReclamoRepository {
 
   async getReportData() {
     try {
-      const sqlQuery = "CALL datosPDF()";
+      const sqlQuery = "CALL datosPDF/CSV()";
       const [result] = await this.database.query(sqlQuery);
       return result[0][0];
     } catch (error) {
