@@ -31,7 +31,7 @@ export default class ReclamoRepository {
     }
   }
 
-  async getReportData() {
+  async getReportData1() {
     try {
       const sqlQuery = "CALL datosPDF()";
       const [result] = await this.database.query(sqlQuery);
@@ -42,7 +42,7 @@ export default class ReclamoRepository {
     }
   }
 
-  async getReportData() {
+  async getReportData2() {
     try {
       // Llamar al procedimiento almacenado para obtener los datos en formato de tabla
       const sqlQuery = "CALL datosCSV()";

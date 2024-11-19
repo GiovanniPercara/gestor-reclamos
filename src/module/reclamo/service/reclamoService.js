@@ -13,8 +13,14 @@ export default class ReclamoService {
     return await this.reclamoRepository.getOneById(id);
   }
 
-  async getReportData() {
-    return await this.reclamoRepository.getReportData();
+  async getReportData(format) {
+    if (format === 'pdf') {
+      return await this.reclamoRepository.getReportData1();  // Llamada para PDF
+    } else if (format === 'csv') {
+      return await this.reclamoRepository.getReportData2();  // Llamada para CSV
+    } else {
+      throw new Error("Formato no soportado");
+    }
   }
 
   async create(reclamo) {

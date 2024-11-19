@@ -67,16 +67,15 @@ export default class ReclamoController {
   
       // Verificar si el formato es pdf o csv
       if (format !== 'pdf' && format !== 'csv') {
-        res.status(400);
-        res.send({ message: "Formato no soportado. Solo se permite pdf o csv" });
+        res.status(400).send({ message: "Formato no soportado. Solo se permite pdf o csv" });
         return;
       }
   
-      const reportData = await this.reclamoService.getReportData();
+      const reportData = await this.reclamoService.getReportData(format);  // Pasar 'format'
   
       if (format === 'pdf') {
         const pdfBuffer = await this.informeService.generatePDF(reportData);
-  
+    
         res.set({
           'Content-Type': 'application/pdf',
           'Content-Disposition': 'attachment; filename="informe.pdf"',
@@ -84,7 +83,7 @@ export default class ReclamoController {
         res.end(pdfBuffer);
       } else if (format === 'csv') {
         const csvBuffer = await this.informeService.generateCSV(reportData);
-  
+    
         res.set({
           'Content-Type': 'text/csv',
           'Content-Disposition': 'attachment; filename="informe.csv"',
@@ -92,10 +91,14 @@ export default class ReclamoController {
         res.end(csvBuffer);
       }
     } catch (error) {
-      res.status(500);
-      res.send({ message: "Error al generar el informe"});
+      console.error("Error al generar el informe: ", error);
+      res.status(500).send({
+        message: "Error al generar el informe",
+        details: error.message,
+      });
     }
   }
+  
 
   async create(req, res) {
     const errors = await this.validationService.validationResult(req);

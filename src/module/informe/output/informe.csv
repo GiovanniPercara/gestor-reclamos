@@ -1,0 +1,9 @@
+ID RECLAMO,TIPO,ESTADO,FECHA DE CREADO
+5,Falla de motor,Creado,2024-11-19T22:49:10.291Z
+7,Falla de frenos,Creado,2024-11-19T22:49:10.291Z
+8,Falla de suspensión,Creado,2024-11-19T22:49:10.291Z
+9,Aprobación de cobertura,Creado,2024-11-19T22:49:10.291Z
+15,Falla de motor,Creado,2024-11-19T22:49:10.291Z
+10,Aprobación de cobertura,En Proceso,2024-11-19T22:49:10.291Z
+11,Falla de suspensión,En Proceso,2024-11-19T22:49:10.291Z
+6,Falla de motor,Finalizado,2024-11-19T22:49:10.291Z
